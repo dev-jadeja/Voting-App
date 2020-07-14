@@ -1,0 +1,32 @@
+{
+	"name": "voting-app",
+	"version": "1.0.0",
+	"description": "Polling App",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app",
+		"app": "nodemon app"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/devjadeja49/Voting-App.git"
+	},
+	"author": "Dev Jadeja",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/devjadeja49/Voting-App/issues"
+	},
+	"homepage": "https://github.com/devjadeja49/Voting-App#readme",
+	"dependencies": {
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
+		"mongoose": "^5.9.24",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"passport-local-mongoose": "^6.0.1"
+	},
+	"devDependencies": {
+		"concurrently": "^5.2.0",
+		"nodemon": "^2.0.4"
+	}
+}
