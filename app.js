@@ -1,10 +1,24 @@
-const express = require('express');
+const express = require("express");
+const connectDB = require("./config/db");
+const usersRoute = require("./routes/api/users");
+const pollsRoute = require("./routes/api/polls");
+const authRoute = require("./routes/api/auth");
+const profileRoute = require("./routes/api/profile");
 
 const app = express();
+connectDB();
 
-app.get('/', (req, res) => {
-    res.send("hello");
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+	res.send("hello");
+});
+
+app.use("/api/users", usersRoute);
+app.use("/api/polls", pollsRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/profile", profileRoute)
 
 const PORT = process.env.PORT || 6969;
 
