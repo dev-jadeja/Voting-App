@@ -1,0 +1,18 @@
+.Jumbo {
+    background-color: #738CA6;
+    margin: 10px;
+}
+.Cover {
+    width: 800px;
+}
+.Jumbo h1 {
+    font-family: "Francois One";
+    color: white;
+    font-size: 70px;
+}
+.Jumbo h5 {
+    color: white;
+}
+.Card {
+    border: none;
+}
