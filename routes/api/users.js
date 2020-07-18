@@ -29,7 +29,7 @@ route.post(
 
 			if (user) {
 				return res.status(400).json({
-					erros: [{ msg: "User already exists" }],
+					errors: [{ msg: "User already exists" }],
 				});
 			}
 
@@ -52,13 +52,12 @@ route.post(
 			};
 
 			jwt.sign(
-				payload, 
+				payload,
 				config.get("jwtSecret"),
-				{expiresIn: 3600},
+				{ expiresIn: 3600 },
 				(err, token) => {
-					if(err)
-						throw err;
-					res.json({token});
+					if (err) throw err;
+					res.json({ token });
 				}
 			);
 		} catch (err) {

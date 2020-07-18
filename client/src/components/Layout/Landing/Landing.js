@@ -16,7 +16,7 @@ const Landing = () => {
 						<h5>
 							Conducting a Poll? You are at the right place.
 							&nbsp;
-							<i class="fas fa-smile-wink"></i>
+							<i className="fas fa-smile-wink"></i>
 						</h5>
 					</Jumbotron>
 				</Col>
@@ -31,7 +31,7 @@ const Landing = () => {
 					>
 						<Card.Body>
 							<Card.Title>
-								<i class="fas fa-vote-yea"></i>
+								<i className="fas fa-vote-yea"></i>
 								&nbsp; Vote
 							</Card.Title>
 							<Card.Text>
@@ -49,7 +49,7 @@ const Landing = () => {
 					>
 						<Card.Body>
 							<Card.Title>
-								<i class="far fa-plus-square"></i>
+								<i className="far fa-plus-square"></i>
 								&nbsp; Create
 							</Card.Title>
 							<Card.Text>
@@ -67,7 +67,7 @@ const Landing = () => {
 					>
 						<Card.Body>
 							<Card.Title>
-								<i class="fas fa-chart-line"></i>
+								<i className="fas fa-chart-line"></i>
 								&nbsp; View
 							</Card.Title>
 							<Card.Text>
@@ -85,7 +85,7 @@ const Landing = () => {
 					>
 						<Card.Body>
 							<Card.Title>
-								<i class="fas fa-share-alt"></i>
+								<i className="fas fa-share-alt"></i>
 								&nbsp; Share
 							</Card.Title>
 							<Card.Text>
