@@ -35,7 +35,7 @@ const Landing = () => {
 								&nbsp; Vote
 							</Card.Title>
 							<Card.Text>
-								Vote on the polls whose links are shared by their creators.
+								Vote on the polls whose IDs are shared by their creators.
 							</Card.Text>
 						</Card.Body>
 					</Card>

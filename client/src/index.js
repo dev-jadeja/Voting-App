@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import alertReducer from "./store/reducers/alert";
 import authReducer from "./store/reducers/auth";
+import pollReducer from "./store/reducers/poll";
 
 const initialState = {};
 
@@ -16,6 +17,7 @@ const middleware = [thunk];
 const rootReducer = combineReducers({
 	alert: alertReducer,
 	auth: authReducer,
+	poll: pollReducer,
 });
 
 const store = createStore(

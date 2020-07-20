@@ -36,7 +36,7 @@ route.post(
 
 			if (!user) {
 				return res.status(400).json({
-					erros: [{ msg: "Invalid Credentials" }],
+					errors: [{ msg: "Invalid Credentials" }],
 				});
 			}
 
@@ -44,13 +44,14 @@ route.post(
 
 			if (!isMatch) {
 				return res.status(400).json({
-					erros: [{ msg: "Invalid Credentials" }],
+					errors: [{ msg: "Invalid Credentials" }],
 				});
 			}
 
 			const payload = {
 				user: {
 					id: user.id,
+					email: user.email
 				},
 			};
 

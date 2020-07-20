@@ -36,6 +36,7 @@ export const register = (username, email, password) => {
 				type: actionTypes.REGISTER_SUCCESS,
 				payload: res.data,
 			});
+			dispatch(actions.setAlert("Logged in successfully", "success"));
 
 			dispatch(loadUser());
 		} catch (err) {
@@ -65,6 +66,7 @@ export const login = (email, password) => {
 				payload: res.data,
 			});
 			dispatch(loadUser());
+			dispatch(actions.setAlert("Logged in successfully", "success"));
 		} catch (err) {
 			const errors = err.response.data.errors;
 			if (errors) {
@@ -80,9 +82,10 @@ export const login = (email, password) => {
 };
 
 export const logout = () => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.LOGOUT,
-        })
-    }
-}
+	return (dispatch) => {
+		dispatch({
+			type: actionTypes.LOGOUT,
+		});
+		dispatch(actions.setAlert("Logged out successfully", "primary"));
+	};
+};

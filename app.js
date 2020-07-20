@@ -3,7 +3,6 @@ const connectDB = require("./config/db");
 const usersRoute = require("./routes/api/users");
 const pollsRoute = require("./routes/api/polls");
 const authRoute = require("./routes/api/auth");
-const profileRoute = require("./routes/api/profile");
 
 const app = express();
 connectDB();
@@ -18,7 +17,6 @@ app.get("/", (req, res) => {
 app.use("/api/users", usersRoute);
 app.use("/api/polls", pollsRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/profile", profileRoute)
 
 const PORT = process.env.PORT || 6969;
 

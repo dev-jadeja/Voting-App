@@ -13,6 +13,6 @@ export const setAlert = (msg, alertType) => {
 				type: actionTypes.REMOVE_ALERT,
 				payload: id,
 			});
-		}, 5000);
+		}, 2500);
 	};
 };
