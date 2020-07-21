@@ -111,7 +111,7 @@ route.put("/vote/:pollid/:choiceid", auth, async (req, res) => {
 		const poll = await Poll.findById(req.params.pollid);
 
 		if (
-			poll.voters.filter((voter) => req.user.id === voter.id)
+			poll.voters.filter((voter) => req.user.id === voter.user.toString())
 				.length > 0
 		) {
 			return res.status(400).json({
@@ -133,6 +133,33 @@ route.put("/vote/:pollid/:choiceid", auth, async (req, res) => {
 		res.json(poll);
 	} catch (err) {
 		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
+route.put("/declare/:id", auth, async (req, res) => {
+	try {
+		const poll = await Poll.findById(req.params.id);
+
+		if (!poll) {
+			return res.status(404).json({
+				errors: [{ msg: "Poll not found" }],
+			});
+		}
+
+		if (poll.user.toString() !== req.user.id) {
+			return res.status(400).json({
+				errors: [{ msg: "User Not Authorized" }],
+			});
+		}
+
+		poll.declare_result = true;
+
+		await poll.save();
+
+		res.json(poll);
+	} catch (err) {
+		console.log(err.message);
 		res.status(500).send("Server Error");
 	}
 });

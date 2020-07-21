@@ -13,6 +13,7 @@ import NewPoll from "./components/NewPoll/NewPoll";
 import Polls from "./components/Polls/Polls";
 import Poll from "./components/Poll/Poll";
 import Vote from "./components/Vote/Vote";
+import NotFound from "./components/NotFound/NotFound";
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -35,6 +36,7 @@ const App = (props) => {
 				<PrivateRoute path="/polls" exact component={Polls} />
 				<PrivateRoute path="/poll/:id" exact component={Poll} />
 				<PrivateRoute path="/vote" exact component={Vote} />
+				<Route component={NotFound} />
 			</Switch>
 		</Fragment>
 	);

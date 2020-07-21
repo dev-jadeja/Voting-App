@@ -4,14 +4,13 @@ const initialState = {
 	polls: [],
 	loading: false,
 	poll: null,
+	deleted: false,
 };
 
 const setStart = (state, payload) => {
 	return {
 		...state,
 		loading: true,
-		polls: [],
-		poll: null,
 	};
 };
 
@@ -36,6 +35,7 @@ const fetchPollsSuccess = (state, payload) => {
 		...state,
 		loading: false,
 		polls: [...payload],
+		deleted: false,
 	};
 };
 
@@ -44,6 +44,7 @@ const fetchPollSuccess = (state, payload) => {
 		...state,
 		loading: false,
 		poll: payload,
+		deleted: false,
 	};
 };
 
@@ -51,6 +52,21 @@ const voteSuccess = (state, payload) => {
 	return {
 		...state,
 		poll: payload,
+		loading: false,
+	};
+};
+
+const voteFail = (state, payload) => {
+	return {
+		...state,
+		loading: false,
+	};
+};
+
+const deletePoll = (state, payload) => {
+	return {
+		...state,
+		deleted: true,
 	};
 };
 
@@ -71,8 +87,14 @@ const reducer = (state = initialState, action) => {
 		case actionTypes.FETCH_POLL_SUCCESS:
 			return fetchPollSuccess(state, payload);
 		case actionTypes.VOTE_SUCCESS:
+		case actionTypes.DECLARE_SUCCESS:
 			return voteSuccess(state, payload);
 		case actionTypes.VOTE_FAIL:
+		case actionTypes.DECLARE_FAIL:
+			return voteFail(state, payload);
+		case actionTypes.DELETE_POLL_FAIL:
+		case actionTypes.DELETE_POLL_SUCCESS:
+			return deletePoll(state, payload)
 		default:
 			return state;
 	}

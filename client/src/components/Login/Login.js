@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import { Redirect } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 
 const Login = (props) => {
 	const [formData, setFormData] = useState({
@@ -26,6 +27,10 @@ const Login = (props) => {
 
 	if (props.isAuthenticated) {
 		return <Redirect to="/" />;
+	}
+
+	if(props.loading) {
+		return <Spinner />
 	}
 
 	return (
@@ -75,6 +80,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		isAuthenticated: state.auth.isAuthenticated,
+		loading: state.auth.loading,
 	};
 };
 

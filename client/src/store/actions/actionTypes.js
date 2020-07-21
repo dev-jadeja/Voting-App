@@ -22,6 +22,14 @@ export const FETCH_POLL_SUCCESS = "FETCH_POLL_SUCCESS";
 export const FETCH_POLL_FAIL = "FETCH_POLL_FAIL";
 
 export const SET_START = "SET_START";
+export const SET_START_AUTH = "SET_START_AUTH";
 
 export const VOTE_SUCCESS = "VOTE_SUCCESS";
 export const VOTE_FAIL = "VOTE_FAIL";
+
+export const DECLARE_SUCCESS = "DECLARE_SUCCESS";
+export const DECLARE_FAIL = "DECLARE_FAIL";
+
+export const DELETE_POLL_SUCCESS = "DELETE_POLL_SUCCESS";
+export const DELETE_POLL_FAIL = "DELETE_POLL_FAIL";
+

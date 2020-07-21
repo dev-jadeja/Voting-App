@@ -5,6 +5,9 @@ import setAuthToken from "../../utils/setAuthToken";
 
 export const loadUser = () => {
 	return async (dispatch) => {
+		dispatch({
+			type: actionTypes.SET_START_AUTH,
+		});
 		if (localStorage.token) {
 			setAuthToken(localStorage.token);
 		}
@@ -25,6 +28,9 @@ export const loadUser = () => {
 
 export const register = (username, email, password) => {
 	return async (dispatch) => {
+		dispatch({
+			type: actionTypes.SET_START_AUTH,
+		});
 		try {
 			const res = await axios.post("/api/users", {
 				username,
@@ -55,6 +61,9 @@ export const register = (username, email, password) => {
 
 export const login = (email, password) => {
 	return async (dispatch) => {
+		dispatch({
+			type: actionTypes.SET_START_AUTH,
+		});
 		try {
 			const res = await axios.post("/api/auth", {
 				email,
@@ -84,8 +93,19 @@ export const login = (email, password) => {
 export const logout = () => {
 	return (dispatch) => {
 		dispatch({
+			type: actionTypes.SET_START_AUTH,
+		});
+		dispatch({
 			type: actionTypes.LOGOUT,
 		});
 		dispatch(actions.setAlert("Logged out successfully", "primary"));
+	};
+};
+
+export const setStartAuth = () => {
+	return (dispatch) => {
+		dispatch({
+			type: actionTypes.SET_START_AUTH,
+		});
 	};
 };

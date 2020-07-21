@@ -3,7 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
 	token: localStorage.getItem("token"),
 	isAuthenticated: null,
-	loading: true,
+	loading: false,
 	user: null,
 };
 
@@ -37,6 +37,13 @@ const userLoaded = (state, payload) => {
 	};
 };
 
+const setStartAuth = (state, payload) => {
+	return {
+		...state,
+		loading: true,
+	};
+};
+
 const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
@@ -50,6 +57,8 @@ const reducer = (state = initialState, action) => {
 			return registerFail(state, payload);
 		case actionTypes.USER_LOADED:
 			return userLoaded(state, payload);
+		case actionTypes.SET_START_AUTH:
+			return setStartAuth(state, payload);
 		default:
 			return state;
 	}

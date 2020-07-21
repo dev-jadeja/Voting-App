@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
+import Spinner from "../Spinner/Spinner";
 
 const NewPoll = (props) => {
 	const [formData, setFormData] = useState({
@@ -51,7 +52,15 @@ const NewPoll = (props) => {
 		} else {
 			props.newPoll(formData.question, updatedOptions);
 		}
+		setFormData({
+			question: "",
+			options: ["", ""],
+		});
 	};
+
+	if (props.loading) {
+		return <Spinner />;
+	}
 
 	let optionFields = formData.options.map((option, idx) => {
 		return (
@@ -114,6 +123,12 @@ const NewPoll = (props) => {
 	);
 };
 
+const mapStateToProps = (state) => {
+	return {
+		loading: state.poll.loading,
+	};
+};
+
 const mapDispatchToProps = (dispatch) => {
 	return {
 		newPoll: (question, options) =>
@@ -123,4 +138,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(NewPoll);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPoll);

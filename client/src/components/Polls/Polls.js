@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import PollBox from "./PollBox/PollBox";
+import Spinner from "../Spinner/Spinner";
 
 const Polls = (props) => {
 	useEffect(() => {
@@ -12,6 +13,10 @@ const Polls = (props) => {
 	}, []);
 
 	let separatePolls = null;
+
+	if(props.loading) {
+		return <Spinner />
+	}
 
 	if (!props.loading) {
 		separatePolls = props.polls.map((poll) => (
